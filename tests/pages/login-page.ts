@@ -18,12 +18,10 @@ export class LoginPage {
     // continue with the rest of the implementation below
   }
 
-  //method to open the page
   async open() {
     await this.page.goto(this.url)
   }
 
-  //method to fill some data and click button, move to another page "Order page"
   async signIn(username: string, password: string) {
     await this.usernameField.fill(username)
     await this.passwordField.fill(password)
