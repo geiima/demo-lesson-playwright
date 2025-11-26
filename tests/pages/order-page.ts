@@ -1,8 +1,9 @@
 import { Locator, Page } from '@playwright/test'
 import { faker } from '@faker-js/faker'
+import { BasePage } from './base-page'
 
-export class OrderPage {
-  readonly page: Page
+export class OrderPage extends BasePage {
+  // readonly page: Page
   readonly statusButton: Locator
   readonly userNameField: Locator
   readonly phoneNumber: Locator
@@ -13,9 +14,12 @@ export class OrderPage {
   readonly logoutButton: Locator
   readonly userNameError: Locator
   readonly phoneError: Locator
+  readonly searchOrderInput: Locator
+  readonly orderSubmitButton: Locator
 
   constructor(page: Page) {
-    this.page = page
+    // this.page = page
+    super(page)
     this.statusButton = page.getByTestId('openStatusPopup-button')
     this.userNameField = page.getByTestId('username-input')
     this.phoneNumber = page.getByTestId('phone-input')
@@ -26,6 +30,8 @@ export class OrderPage {
     this.logoutButton = page.getByTestId('logout-button')
     this.userNameError = page.getByTestId('username-input-error')
     this.phoneError = page.getByTestId('phone-input-error')
+    this.searchOrderInput = page.getByTestId('searchOrder-input')
+    this.orderSubmitButton = page.getByTestId('searchOrder-submitButton')
   }
 
   async createOrder(
